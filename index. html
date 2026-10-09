@@ -1,1 +1,605 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Principle of Duality: Boolean Logic, Sets, Posets & Optimization</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .math-font { font-family: 'Cambria Math', 'Times New Roman', serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+  <!-- Header / Navigation -->
+  <header class="bg-indigo-700 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="bg-white text-indigo-700 p-2 rounded-lg font-bold text-xl shadow">
+          f ↔ fᴰ
+        </div>
+        <div>
+          <h1 class="text-lg font-bold leading-tight">Principle of Duality</h1>
+          <p class="text-xs text-indigo-200">Discrete Mathematics, Boolean Logic & Optimization</p>
+        </div>
+      </div>
+      <nav class="flex space-x-2 text-sm font-medium mt-2 sm:mt-0">
+        <a href="#theory" class="px-3 py-1.5 rounded hover:bg-indigo-600 transition">Theory</a>
+        <a href="#examples" class="px-3 py-1.5 rounded hover:bg-indigo-600 transition">Examples</a>
+        <a href="#interactive-tool" class="px-3 py-1.5 bg-indigo-800 hover:bg-indigo-900 text-amber-300 rounded transition font-semibold">Dual Transformer</a>
+        <a href="#experiments" class="px-3 py-1.5 rounded hover:bg-indigo-600 transition">Experiments</a>
+        <a href="#quiz" class="px-3 py-1.5 rounded hover:bg-indigo-600 transition">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-grow space-y-12">
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-900 text-white rounded-2xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+      <div class="max-w-3xl relative z-10 space-y-4">
+        <span class="bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Mathematical Symmetry</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">The Principle of Duality</h2>
+        <p class="text-indigo-100 text-sm sm:text-base leading-relaxed">
+          The Principle of Duality states that any true identity in a formal algebraic structure (such as Boolean algebra, set theory, or order theory) remains valid when operators and identities are systematically swapped: <span class="math-font font-semibold">AND (·) ↔ OR (+)</span> and <span class="math-font font-semibold">0 ↔ 1</span>.
+        </p>
+        <div class="pt-2 flex flex-wrap gap-3">
+          <a href="#interactive-tool" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-5 py-2.5 rounded-lg shadow transition flex items-center gap-2">
+            <i class="fa-solid fa-repeat font-bold"></i> Dual Transformer & Verifier
+          </a>
+          <a href="#theory" class="bg-white/10 hover:bg-white/20 text-white font-medium px-5 py-2.5 rounded-lg backdrop-blur border border-white/20 transition">
+            Explore Theory
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Concepts & Theory -->
+    <section id="theory" class="space-y-6">
+      <div class="border-b border-slate-200 pb-3">
+        <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-book-open text-indigo-600"></i> Core Concepts & Theory
+        </h2>
+        <p class="text-slate-600 text-sm">Fundamental rules of dual transformations across Boolean algebra, set theory, posets, and LP</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition space-y-3">
+          <div class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center font-bold">01</div>
+          <h3 class="font-bold text-slate-900">Boolean Algebra Duality</h3>
+          <div class="bg-slate-50 p-2 rounded text-center math-font text-indigo-900 font-bold text-xs border border-slate-200">
+            (·) ↔ (+), &nbsp; 0 ↔ 1
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Swap all AND operators with OR operators, and all identity constants 0 with 1, keeping literals (variables) unchanged.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition space-y-3">
+          <div class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center font-bold">02</div>
+          <h3 class="font-bold text-slate-900">Set Theoretic Duality</h3>
+          <div class="bg-slate-50 p-2 rounded text-center math-font text-indigo-900 font-bold text-xs border border-slate-200">
+            (∩) ↔ (∪), &nbsp; ∅ ↔ U
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Swap set intersections with unions, and the empty set <span class="math-font">∅</span> with the universal set <span class="math-font">U</span>.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition space-y-3">
+          <div class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center font-bold">03</div>
+          <h3 class="font-bold text-slate-900">Posets & Order Theory</h3>
+          <div class="bg-slate-50 p-2 rounded text-center math-font text-indigo-900 font-bold text-xs border border-slate-200">
+            (P, ≤) ↔ (P, ≥)
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Inverting partial order binary relations converts meets (GLB <span class="math-font">∧</span>) into joins (LUB <span class="math-font">∨</span>) in lattice structures.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition space-y-3">
+          <div class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center font-bold">04</div>
+          <h3 class="font-bold text-slate-900">Self-Dual Functions</h3>
+          <div class="bg-slate-50 p-2 rounded text-center math-font text-indigo-900 font-bold text-xs border border-slate-200">
+            f(x₁, ..., xₙ) = fᴰ(x₁, ..., xₙ)
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Functions identical to their duals (e.g., Majority function <span class="math-font">AB + BC + AC</span>). Satisfies <span class="math-font">fᴰ(x) = ¬f(¬x)</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Worked Examples -->
+    <section id="examples" class="space-y-6">
+      <div class="border-b border-slate-200 pb-3">
+        <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-indigo-600"></i> Worked Examples
+        </h2>
+        <p class="text-slate-600 text-sm">Step-by-step primal vs. dual algebraic identities with 1-click loading</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Example 1 -->
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div class="p-5 space-y-3">
+            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded">Example 1</span>
+            <h3 class="font-bold text-slate-900 text-lg">Distributive Law Duality</h3>
+            <p class="text-xs text-slate-500">Fundamental Boolean Algebra Axiom</p>
+
+            <div class="bg-slate-50 p-3 rounded text-xs space-y-1.5 border border-slate-200 font-mono">
+              <p><strong class="text-slate-900">Primal:</strong> A · (B + C) = (A · B) + (A · C)</p>
+              <p><strong class="text-indigo-700">Dual:</strong> A + (B · C) = (A + B) · (A + C)</p>
+            </div>
+
+            <div class="text-xs space-y-1 text-slate-700">
+              <p><strong class="text-slate-900">Transformation:</strong></p>
+              <p class="math-font text-slate-800">Swapped outer AND for OR, inner OR for AND, and expanded terms.</p>
+            </div>
+          </div>
+          <div class="p-4 bg-slate-50 border-t border-slate-200">
+            <button onclick="loadExpression('A . (B + C)')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded text-sm transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-arrow-down font-bold"></i> Load into Dual Transformer
+            </button>
+          </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div class="p-5 space-y-3">
+            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-1 rounded">Example 2</span>
+            <h3 class="font-bold text-slate-900 text-lg">Absorption Law Duality</h3>
+            <p class="text-xs text-slate-500">Term Simplification Theorem</p>
+
+            <div class="bg-slate-50 p-3 rounded text-xs space-y-1.5 border border-slate-200 font-mono">
+              <p><strong class="text-slate-900">Primal:</strong> A + (A · B) = A</p>
+              <p><strong class="text-indigo-700">Dual:</strong> A · (A + B) = A</p>
+            </div>
+
+            <div class="text-xs space-y-1 text-slate-700">
+              <p><strong class="text-slate-900">Transformation:</strong></p>
+              <p class="math-font text-slate-800">Swapped outer OR (+) for AND (·), and inner AND (·) for OR (+).</p>
+            </div>
+          </div>
+          <div class="p-4 bg-slate-50 border-t border-slate-200">
+            <button onclick="loadExpression('A + (A . B)')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded text-sm transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-arrow-down font-bold"></i> Load into Dual Transformer
+            </button>
+          </div>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div class="p-5 space-y-3">
+            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded">Example 3</span>
+            <h3 class="font-bold text-slate-900 text-lg">Consensus Theorem Duality</h3>
+            <p class="text-xs text-slate-500">Redundant Clause Elimination</p>
+
+            <div class="bg-slate-50 p-3 rounded text-xs space-y-1.5 border border-slate-200 font-mono">
+              <p><strong class="text-slate-900">Primal:</strong> A·B + A'·C + B·C = A·B + A'·C</p>
+              <p><strong class="text-indigo-700">Dual:</strong> (A+B) · (A'+C) · (B+C) = (A+B) · (A'+C)</p>
+            </div>
+
+            <div class="text-xs space-y-1 text-slate-700">
+              <p><strong class="text-slate-900">Transformation:</strong></p>
+              <p class="math-font text-slate-800">Converts product-of-sums into sum-of-products dual representation.</p>
+            </div>
+          </div>
+          <div class="p-4 bg-slate-50 border-t border-slate-200">
+            <button onclick="loadExpression('(A . B) + (A\' . C) + (B . C)')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded text-sm transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-arrow-down font-bold"></i> Load into Dual Transformer
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Dual Transformer & Truth Table Tool -->
+    <section id="interactive-tool" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-md space-y-8">
+      <div class="border-b border-slate-200 pb-4 flex flex-wrap justify-between items-center gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-repeat text-indigo-600"></i> Interactive Dual Transformer & Verifier
+          </h2>
+          <p class="text-slate-600 text-sm">Enter a Boolean expression to generate its dual and verify the fundamental identity fᴰ(x) = ¬f(¬x)</p>
+        </div>
+        <div>
+          <button onclick="resetTransformer()" class="px-3 py-1.5 border border-slate-300 hover:bg-slate-100 rounded text-xs font-semibold text-slate-700">
+            Reset Expression
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Expression Input -->
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
+          <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-code text-indigo-600"></i> Expression Input
+          </h3>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Primal Boolean Expression f(A, B, C)</label>
+              <input type="text" id="expr-input" value="A . (B + C)" oninput="processDual()" class="w-full px-3 py-2 border border-slate-300 rounded text-sm font-mono font-bold text-indigo-900 focus:ring-2 focus:ring-indigo-500">
+              <p class="text-[11px] text-slate-500 mt-1">Use <span class="font-mono font-bold">.</span> for AND, <span class="font-mono font-bold">+</span> for OR, <span class="font-mono font-bold">'</span> for NOT.</p>
+            </div>
+
+            <!-- Quick Presets -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Quick Presets:</label>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="loadExpression('A . (B + C)')" class="px-2.5 py-1 bg-white border border-slate-300 rounded text-xs hover:bg-slate-100 font-mono">Distributive</button>
+                <button onclick="loadExpression('A + (A . B)')" class="px-2.5 py-1 bg-white border border-slate-300 rounded text-xs hover:bg-slate-100 font-mono">Absorption</button>
+                <button onclick="loadExpression('(A . B) + (B . C) + (A . C)')" class="px-2.5 py-1 bg-white border border-slate-300 rounded text-xs hover:bg-slate-100 font-mono">Majority</button>
+                <button onclick="loadExpression('A + 0')" class="px-2.5 py-1 bg-white border border-slate-300 rounded text-xs hover:bg-slate-100 font-mono">Identity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Derived Dual Output -->
+        <div class="bg-indigo-900 text-white p-5 rounded-xl flex flex-col justify-between space-y-4 shadow-inner">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-300">Generated Dual Expression fᴰ</h3>
+            <div id="dual-output" class="my-3 text-lg font-bold font-mono text-amber-300 bg-indigo-950/60 p-3 rounded border border-indigo-700">
+              A + (B . C)
+            </div>
+          </div>
+
+          <div class="text-xs text-indigo-200 border-t border-indigo-800/80 pt-2 space-y-1">
+            <p><strong class="text-white">Applied Dual Transformation Rules:</strong></p>
+            <p>1. AND (.) ↔ OR (+)</p>
+            <p>2. Constants 0 ↔ 1</p>
+            <p>3. Literals (A, B, C) remain unchanged</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Truth Table Verification -->
+      <div class="space-y-3">
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+          <i class="fa-solid fa-table text-indigo-600"></i> Truth Table Duality Verification: fᴰ(A, B, C) = ¬f(¬A, ¬B, ¬C)
+        </h3>
+
+        <div class="overflow-x-auto bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <table class="w-full text-center text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-200 text-slate-800 font-bold border-b border-slate-300">
+                <th class="p-2 border-r border-slate-300">A</th>
+                <th class="p-2 border-r border-slate-300">B</th>
+                <th class="p-2 border-r border-slate-300">C</th>
+                <th class="p-2 border-r border-slate-300 bg-indigo-100 text-indigo-900">Primal f(A,B,C)</th>
+                <th class="p-2 border-r border-slate-300 bg-purple-100 text-purple-900">Dual fᴰ(A,B,C)</th>
+                <th class="p-2 bg-amber-100 text-amber-900">¬f(¬A,¬B,¬C)</th>
+              </tr>
+            </thead>
+            <tbody id="truth-table-body" class="divide-y divide-slate-200 font-mono">
+              <!-- Dynamically populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiments & Sandboxes -->
+    <section id="experiments" class="space-y-6">
+      <div class="border-b border-slate-200 pb-3">
+        <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-flask text-indigo-600"></i> Experiments & Interactive Sandboxes
+        </h2>
+        <p class="text-slate-600 text-sm">Explore self-dual functions and Linear Programming Primal-Dual matrix transposition</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Experiment 1: Self-Dual Majority Function -->
+        <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-4 shadow-sm">
+          <div class="flex items-center gap-3">
+            <div class="bg-indigo-100 text-indigo-700 p-2 rounded-lg">
+              <i class="fa-solid fa-scale-balanced font-bold"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900">Self-Dual Majority Function Sandbox</h3>
+              <p class="text-xs text-slate-500">Verify f = fᴰ for f(A,B,C) = AB + BC + AC</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-center">
+            <button id="btn-a" onclick="toggleMajority('A')" class="p-2 border border-slate-300 rounded font-bold text-xs bg-indigo-50 text-indigo-900">A = 1</button>
+            <button id="btn-b" onclick="toggleMajority('B')" class="p-2 border border-slate-300 rounded font-bold text-xs bg-slate-100 text-slate-700">B = 0</button>
+            <button id="btn-c" onclick="toggleMajority('C')" class="p-2 border border-slate-300 rounded font-bold text-xs bg-indigo-50 text-indigo-900">C = 1</button>
+          </div>
+
+          <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg space-y-2 text-xs">
+            <div class="flex justify-between">
+              <span>Primal Output f(A,B,C):</span>
+              <span id="maj-primal" class="font-mono font-bold text-indigo-900">1</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Dual Output fᴰ(A,B,C):</span>
+              <span id="maj-dual" class="font-mono font-bold text-purple-900">1</span>
+            </div>
+            <div class="flex justify-between border-t border-indigo-200 pt-1">
+              <span>Self-Duality Status:</span>
+              <span id="maj-status" class="font-bold text-emerald-700">f = fᴰ (Self-Dual Verified)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experiment 2: Linear Programming Primal-Dual Matrix Transposition -->
+        <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-4 shadow-sm">
+          <div class="flex items-center gap-3">
+            <div class="bg-purple-100 text-purple-700 p-2 rounded-lg">
+              <i class="fa-solid fa-chart-line font-bold"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900">Linear Programming Primal-Dual Sandbox</h3>
+              <p class="text-xs text-slate-500">Transposition of objective vector c and bound vector b</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="bg-slate-50 p-3 rounded border border-slate-200 font-mono space-y-1">
+              <p class="font-bold text-indigo-900">Primal Problem (Max):</p>
+              <p>Max Z = 3x₁ + 5x₂</p>
+              <p>s.t. 2x₁ + x₂ ≤ 8</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x₁ + 3x₂ ≤ 12</p>
+            </div>
+            <div class="bg-slate-50 p-3 rounded border border-slate-200 font-mono space-y-1">
+              <p class="font-bold text-purple-900">Dual Problem (Min):</p>
+              <p>Min W = 8y₁ + 12y₂</p>
+              <p>s.t. 2y₁ + y₂ ≥ 3</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y₁ + 3y₂ ≥ 5</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Practice Quiz Section -->
+    <section id="quiz" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-md space-y-6">
+      <div class="border-b border-slate-200 pb-3 flex justify-between items-center">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-graduation-cap text-indigo-600"></i> Practice Quiz
+          </h2>
+          <p class="text-slate-600 text-sm">Test your comprehension with 5 interactive questions</p>
+        </div>
+        <div id="quiz-score-badge" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1.5 rounded-full hidden">
+          Score: <span id="quiz-score">0</span>/5
+        </div>
+      </div>
+
+      <!-- Quiz Questions Container -->
+      <div id="quiz-container" class="space-y-6">
+        <!-- Questions injected by JS -->
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
+        <button onclick="submitQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-6 rounded-lg shadow transition">
+          Submit & Grade Quiz
+        </button>
+        <button onclick="resetQuiz()" class="text-slate-500 hover:text-slate-800 text-xs font-semibold underline">
+          Reset Answers
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs mt-12 border-t border-slate-800">
+    <p>Principle of Duality Web Application • Discrete Mathematics & Boolean Algebra</p>
+    <p class="text-slate-500 mt-1">Single-file structure ready for GitHub Pages deployment.</p>
+  </footer>
+
+  <!-- Script Logic -->
+  <script>
+    let majState = { A: 1, B: 0, C: 1 };
+
+    function loadExpression(expr) {
+      document.getElementById('expr-input').value = expr;
+      processDual();
+      document.getElementById('interactive-tool').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetTransformer() {
+      loadExpression('A . (B + C)');
+    }
+
+    function processDual() {
+      const expr = document.getElementById('expr-input').value;
+      
+      // Compute dual string representation
+      let dualExpr = expr
+        .replace(/\+/g, '___PLUS___')
+        .replace(/\./g, '+')
+        .replace(/___PLUS___/g, '.')
+        .replace(/\b0\b/g, '___ZERO___')
+        .replace(/\b1\b/g, '0')
+        .replace(/___ZERO___/g, '1');
+
+      document.getElementById('dual-output').innerText = dualExpr;
+
+      // Render Truth Table
+      renderTruthTable(expr, dualExpr);
+    }
+
+    function evalExpr(expr, a, b, c) {
+      try {
+        let clean = expr
+          .replace(/A/g, a)
+          .replace(/B/g, b)
+          .replace(/C/g, c)
+          .replace(/\./g, '&&')
+          .replace(/\+/g, '||')
+          .replace(/'/g, ' === 0 ? 1 : 0');
+        return eval(clean) ? 1 : 0;
+      } catch (e) {
+        return 0;
+      }
+    }
+
+    function renderTruthTable(primalExpr, dualExpr) {
+      const tbody = document.getElementById('truth-table-body');
+      tbody.innerHTML = '';
+
+      for (let a = 0; a <= 1; a++) {
+        for (let b = 0; b <= 1; b++) {
+          for (let c = 0; c <= 1; c++) {
+            const primalVal = evalExpr(primalExpr, a, b, c);
+            const dualVal = evalExpr(dualExpr, a, b, c);
+            const negPrimalNegInputs = evalExpr(primalExpr, 1 - a, 1 - b, 1 - c) === 0 ? 1 : 0;
+
+            const tr = document.createElement('tr');
+            tr.className = "hover:bg-indigo-50/50 transition";
+            tr.innerHTML = `
+              <td class="p-2 border-r border-slate-200 font-bold">${a}</td>
+              <td class="p-2 border-r border-slate-200 font-bold">${b}</td>
+              <td class="p-2 border-r border-slate-200 font-bold">${c}</td>
+              <td class="p-2 border-r border-slate-200 font-bold text-indigo-700 bg-indigo-50/30">${primalVal}</td>
+              <td class="p-2 border-r border-slate-200 font-bold text-purple-700 bg-purple-50/30">${dualVal}</td>
+              <td class="p-2 font-bold text-amber-700 bg-amber-50/30">${negPrimalNegInputs}</td>
+            `;
+            tbody.appendChild(tr);
+          }
+        }
+      }
+    }
+
+    // Experiment 1 Logic
+    function toggleMajority(varName) {
+      majState[varName] = majState[varName] === 1 ? 0 : 1;
+      
+      const btn = document.getElementById(`btn-${varName.toLowerCase()}`);
+      if (majState[varName] === 1) {
+        btn.className = "p-2 border border-slate-300 rounded font-bold text-xs bg-indigo-50 text-indigo-900";
+        btn.innerText = `${varName} = 1`;
+      } else {
+        btn.className = "p-2 border border-slate-300 rounded font-bold text-xs bg-slate-100 text-slate-700";
+        btn.innerText = `${varName} = 0`;
+      }
+
+      const { A, B, C } = majState;
+      // Majority f(A,B,C) = AB + BC + AC
+      const primal = (A && B) || (B && C) || (A && C) ? 1 : 0;
+      // Dual fD(A,B,C) = (A+B)(B+C)(A+C)
+      const dual = (A || B) && (B || C) && (A || C) ? 1 : 0;
+
+      document.getElementById('maj-primal').innerText = primal;
+      document.getElementById('maj-dual').innerText = dual;
+    }
+
+    // Quiz Questions Data
+    const quizData = [
+      {
+        q: "What is the dual of the Boolean expression A + (B · C)?",
+        options: ["A · (B + C)", "A + (B + C)", "A' · (B' + C')", "A · B + C"],
+        correct: 0,
+        exp: "To find the dual, swap OR (+) with AND (·) and vice versa, keeping literals unchanged: A · (B + C)."
+      },
+      {
+        q: "In set theory duality, which operation is swapped with Union (∪)?",
+        options: ["Complement (A')", "Intersection (∩)", "Subset (⊆)", "Symmetric Difference (Δ)"],
+        correct: 1,
+        exp: "In set theoretic duality, Union (∪) corresponds directly to Intersection (∩)."
+      },
+      {
+        q: "Which of the following functions is a classic example of a self-dual Boolean function?",
+        options: ["XOR Gate (A ⊕ B)", "Majority Function (AB + BC + AC)", "AND Gate (A · B)", "OR Gate (A + B)"],
+        correct: 1,
+        exp: "The 3-variable Majority function f = AB + BC + AC has the dual fᴰ = (A+B)(B+C)(A+C) = AB + BC + AC = f."
+      },
+      {
+        q: "According to the fundamental principle of duality, if a Boolean identity is true, what can be said about its dual?",
+        options: [
+          "It is always false",
+          "It is also always true",
+          "It is true only when variables are inverted",
+          "It depends on the number of variables"
+        ],
+        correct: 1,
+        exp: "The Principle of Duality guarantees that if an algebraic identity is valid, its dual statement is automatically valid."
+      },
+      {
+        q: "What is the dual of the Boolean constant 0?",
+        options: ["0", "1", "0'", "Undefined"],
+        correct: 1,
+        exp: "Under dual transformation rules, the constant 0 is replaced by 1, and 1 is replaced by 0."
+      }
+    ];
+
+    // Render Quiz
+    function renderQuiz() {
+      const qContainer = document.getElementById('quiz-container');
+      qContainer.innerHTML = '';
+
+      quizData.forEach((item, qIdx) => {
+        const card = document.createElement('div');
+        card.className = 'bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3';
+        
+        let optionsHTML = item.options.map((opt, oIdx) => `
+          <label class="flex items-center space-x-3 p-2 rounded bg-white border border-slate-200 cursor-pointer hover:bg-indigo-50/50 transition text-xs font-medium">
+            <input type="radio" name="q-${qIdx}" value="${oIdx}" class="text-indigo-600 focus:ring-indigo-500">
+            <span>${opt}</span>
+          </label>
+        `).join('');
+
+        card.innerHTML = `
+          <div class="font-bold text-slate-900 text-sm flex gap-2">
+            <span class="text-indigo-600">Q${qIdx + 1}.</span> ${item.q}
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+            ${optionsHTML}
+          </div>
+          <div id="q-${qIdx}-exp" class="hidden p-3 rounded text-xs leading-relaxed"></div>
+        `;
+        qContainer.appendChild(card);
+      });
+    }
+
+    // Submit Quiz
+    function submitQuiz() {
+      let score = 0;
+
+      quizData.forEach((item, qIdx) => {
+        const selected = document.querySelector(`input[name="q-${qIdx}"]:checked`);
+        const expDiv = document.getElementById(`q-${qIdx}-exp`);
+        expDiv.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-200', 'bg-rose-50', 'text-rose-900', 'border-rose-200');
+
+        if (selected && parseInt(selected.value) === item.correct) {
+          score++;
+          expDiv.classList.add('bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-200');
+          expDiv.innerHTML = `<strong>Correct!</strong> ${item.exp}`;
+        } else {
+          expDiv.classList.add('bg-rose-50', 'text-rose-900', 'border', 'border-rose-200');
+          expDiv.innerHTML = `<strong>Incorrect.</strong> ${item.exp}`;
+        }
+      });
+
+      const badge = document.getElementById('quiz-score-badge');
+      const scoreSpan = document.getElementById('quiz-score');
+      badge.classList.remove('hidden');
+      scoreSpan.innerText = score;
+    }
+
+    // Reset Quiz
+    function resetQuiz() {
+      renderQuiz();
+      document.getElementById('quiz-score-badge').classList.add('hidden');
+    }
+
+    // Initialize Page
+    window.onload = function() {
+      processDual();
+      renderQuiz();
+    };
+  </script>
+</body>
+</html>
